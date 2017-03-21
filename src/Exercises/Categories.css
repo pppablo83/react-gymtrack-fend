@@ -1,0 +1,18 @@
+.Category-Section {
+    border-bottom: thick solid deepskyblue;
+    align-content: center;
+}
+
+.Category-Section h3 {
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
+.Category-Section ul {
+    list-style-type: none;
+}
+
+.Category-Section li {
+    border-top: thin solid deepskyblue;
+    border-bottom: thin solid deepskyblue;
+}
