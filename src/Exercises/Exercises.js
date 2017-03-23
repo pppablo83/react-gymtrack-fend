@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { ListGroupItem } from 'react-bootstrap'
 
 class ExerciseRow extends Component {
   render() {
-    const name = this.props.name;
     return (
-        <li>{name}</li>
+        <ListGroupItem>{ this.props.name}</ListGroupItem>
     );
   }
 }

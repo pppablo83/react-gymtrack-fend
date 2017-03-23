@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { values, mapObject, groupBy } from 'underscore';
 import ExerciseRow from './Exercises'
-import './Categories.css'
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
+
 
 class CategorySection extends Component {
   render() {
@@ -9,12 +10,10 @@ class CategorySection extends Component {
       return <ExerciseRow name={exercise.name} key={exercise.id} />;
     });
     return (
-      <section className="Category-Section">
-        <h3>{this.props.category}</h3>
-        <ul>
-          {rows}
-        </ul>
-      </section>
+      <ListGroup>
+        <ListGroupItem header={this.props.category} /> 
+        {rows}    
+      </ListGroup>
     );
   }
 }
