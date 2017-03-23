@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { values, mapObject, groupBy } from 'underscore';
 import ExerciseRow from './Exercises'
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup , Panel} from 'react-bootstrap';
 
 
 class CategorySection extends Component {
   render() {
-    const rows = this.props.exercises.map(function (exercise) {
+    const rows = this.props.exercises.map((exercise) => {
       return <ExerciseRow name={exercise.name} key={exercise.id} />;
     });
     return (
-      <ListGroup>
-        <ListGroupItem header={this.props.category} /> 
-        {rows}    
-      </ListGroup>
+      <Panel collapsible defaultExpanded header={this.props.category}>
+        <ListGroup fill>
+          {rows}    
+        </ListGroup>
+      </Panel>
     );
   }
 }
@@ -21,10 +22,10 @@ class CategorySection extends Component {
 class ExerciseCategoryTable extends Component {
   render() {
     const exercises = this.props.exercises;
-    const exercisesGroupedByCategory = groupBy(exercises, function(exercise) {
+    const exercisesGroupedByCategory = groupBy(exercises, (exercise) => {
       return exercise.category;
     });
-    const categoriesSections = values(mapObject(exercisesGroupedByCategory, function (exercises, category) {
+    const categoriesSections = values(mapObject(exercisesGroupedByCategory, (exercises, category) => {
       return <CategorySection category={category} exercises={exercises} key={category} />
     }));
     return (
