@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ExerciseCategoryTable from './Exercises/Categories';
+import App from './App'
+import { Provider } from 'react-redux';
+//import { Router, Route, browserHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
+import createStore from './redux/store'
 
 const EXERCISES = [
     { "id" : 0, "name" : "Bench Press", "lang" : "en", "category" : "Chest", "type" : "weights", "desc" : "", "logo" : ""},
@@ -15,7 +18,14 @@ const EXERCISES = [
     { "id" : 6, "name" : "Bycicle", "lang" : "en", "category" : "Cardio", "type" : "distance", "desc" : "", "logo" : ""}
 ];
 
+const store = createStore({
+  exercises: EXERCISES
+});
+
 ReactDOM.render(
-  <ExerciseCategoryTable exercises={EXERCISES} />,
+  <Provider store={store}>
+    <App/>
+  </Provider>,
   document.getElementById('root')
 );
+

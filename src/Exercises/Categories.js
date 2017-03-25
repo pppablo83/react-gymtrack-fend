@@ -21,8 +21,7 @@ class CategorySection extends Component {
 
 class ExerciseCategoryTable extends Component {
   render() {
-    const exercises = this.props.exercises;
-    const exercisesGroupedByCategory = groupBy(exercises, (exercise) => {
+    const exercisesGroupedByCategory = groupBy(this.props.exercises, (exercise) => {
       return exercise.category;
     });
     const categoriesSections = values(mapObject(exercisesGroupedByCategory, (exercises, category) => {
