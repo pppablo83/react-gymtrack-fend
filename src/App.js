@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
-import ExerciseCategoryTable from './Exercises/Categories'
+import React, { Component } from 'react'
+import { PageHeader } from 'react-bootstrap'
+import ReadOnlyExercisesTable from './Exercises/ReadOnlyExercisesTable'
 
 class App extends Component {
   render() {
     return (
-        <ExerciseCategoryTable />
+      <div>
+        <PageHeader>Gym Tracker</PageHeader>
+        <ReadOnlyExercisesTable />
+      </div>
     );
   }
 }
