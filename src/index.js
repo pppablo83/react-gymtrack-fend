@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App'
 import { Provider } from 'react-redux';
-//import { Router, Route, browserHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
 import createStore from './redux/store'
+import { Router, browserHistory } from 'react-router'
+import routes from './routes'
 
 const EXERCISES = [
     { "id" : 0, "name" : "Bench Press", "lang" : "en", "category" : "Chest", "type" : "weights", "desc" : "", "logo" : ""},
@@ -24,7 +24,7 @@ const store = createStore({
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <Router history={browserHistory} routes={routes} />
   </Provider>,
   document.getElementById('root')
 );
