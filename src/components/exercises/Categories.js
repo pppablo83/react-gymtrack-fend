@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { values, mapObject, groupBy } from 'underscore';
 import ExerciseRow from './Exercises'
 import { ListGroup , Panel} from 'react-bootstrap';
@@ -18,18 +18,17 @@ CategorySection.PropTypes = {
   exercises: PropTypes.array.isRequired
 }
 
-class ExercisesPerCategoryList extends Component {
-  render() {
-    const exercisesGroupedByCategory = groupBy(this.props.exercises, (exercise) => {
+const ExercisesPerCategoryList = ({exercises}) => {
+  const exercisesGroupedByCategory = groupBy(exercises, (exercise) => {
       return exercise.category;
     });
-    const categoriesSections = values(mapObject(exercisesGroupedByCategory, (exercises, category) => {
+  const categoriesSections = values(mapObject(exercisesGroupedByCategory, (exercises, category) => {
       return <CategorySection category={category} exercises={exercises} key={category} />
     }));
-    return (
-      <div>{categoriesSections}</div>
-    );
-  }
+
+  return (
+    <div>{categoriesSections}</div>
+  )
 }
 
 ExercisesPerCategoryList.PropTypes = {
