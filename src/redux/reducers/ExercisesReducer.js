@@ -13,6 +13,9 @@ export default (state = [], action) => {
                 }
             ]    
         }
+        case types.LOAD_EXERCISES: {
+            return action.payload;
+        }
         default:
             return state;       
     }
