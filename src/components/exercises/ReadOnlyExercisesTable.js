@@ -1,21 +1,13 @@
 import { connect } from 'react-redux'
 import { filterExercises } from '../../redux/actions/ExercisesActions'
+import { getFilteredExercises } from '../../redux/selectors'
 import { FilterableExercisesPerCategoryList } from './Categories'
-
-const filterByName = (array, filterText) => {
-  if(filterText.length > 0) {
-    return array.filter(el => el.name.toLowerCase().indexOf(filterText) !== -1)
-  } else {
-    return array    
-  }
-}
 
 const mapStateToProps = (state) => (
   {
     exercisesData : Object.assign({}, 
                                 state.exercisesData,
-                                {exercises : 
-                                  filterByName(state.exercisesData.exercises, state.exercisesData.filterText)})
+                                {exercises : getFilteredExercises(state.exercisesData)})
   }
 )
 
