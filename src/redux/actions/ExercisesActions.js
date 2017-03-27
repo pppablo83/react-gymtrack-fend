@@ -15,15 +15,25 @@ const loadExercises = () => {
 
     return {
         type: types.LOAD_EXERCISES,
-        payload: EXERCISES
+        payload: {
+            filterText: '',
+            exercises: EXERCISES
+        }
     }
 }
 
-const addExercise = (exercise) => {
-    return {
+const addExercise = (exercise) => (
+    {
         type: types.ADD_EXERCISE_TO_LIST_OF_EXERCISES,
         payload: exercise
-    }
-}
+    }    
+)
 
-export { addExercise, loadExercises };
+const filterExercises = (filterText) => (
+    {
+        type: types.FILTER_EXERCISES_PER_NAME,
+        payload: filterText
+    }
+)
+
+export { addExercise, loadExercises, filterExercises };

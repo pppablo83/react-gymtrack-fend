@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import exercises from './ExercisesReducer'
+import exercisesDataReducer from './ExerciseDataReducer'
 
 const rootReducer = combineReducers({
-    exercises
+    exercisesData : exercisesDataReducer
 });
 
 export default rootReducer;
