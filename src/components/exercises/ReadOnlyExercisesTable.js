@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { filterExercises } from '../../redux/actions/ExercisesActions'
-import { getFilteredExercises } from '../../redux/selectors'
+import { getFilteredExercises } from '../../redux/selectors/ExercisesSelectors'
 import { FilterableExercisesPerCategoryList } from './Categories'
 
 const mapStateToProps = (state) => (

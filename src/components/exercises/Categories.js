@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { values, mapObject, groupBy } from 'underscore';
-import { ExerciseRow, ExerciseSearchBar } from './Exercises'
+import { ExerciseRow, ExercisesHeader } from './Exercises'
 import { ListGroup , Panel} from 'react-bootstrap';
 
 const CategorySection = ({category, exercises}) => (
@@ -37,7 +37,7 @@ ExercisesPerCategoryList.PropTypes = {
 
 const FilterableExercisesPerCategoryList = ({exercisesData, filter }) => (
   <div>
-    <ExerciseSearchBar filterText={exercisesData.filterText} filter={filter} />
+    <ExercisesHeader filterText={exercisesData.filterText} filter={filter}/>
     <ExercisesPerCategoryList exercises={exercisesData.exercises} />
   </div>
 )

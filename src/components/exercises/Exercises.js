@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { ListGroupItem, FormGroup, FormControl } from 'react-bootstrap'
+import { ListGroupItem, FormGroup, FormControl, Form, Button } from 'react-bootstrap'
+import { LinkContainer} from 'react-router-bootstrap'
 
 const ExerciseRow = ({name}) => (
   <ListGroupItem>{name}</ListGroupItem>
@@ -9,21 +10,29 @@ ExerciseRow.PropTypes = {
   name: PropTypes.string.isRequired
 }
 
-const ExerciseSearchBar = ({filterText, filter}) => {
+const ExercisesHeader = ({filterText, filter}) => (
+  <Form inline>
+    <FormGroup controlId="formBasicText">
+      <ExerciseSearchBar filterText={filterText} filter={filter}/>
+      <AddExerciseButton />
+    </FormGroup>
+  </Form>  
+)
 
+const ExerciseSearchBar = ({filterText, filter}) => {
   const handleChange = (e) => {
     filter(e.target.value);
   }
-
   return (
-    <form>
-      <FormGroup controlId="formBasicText">
-        <FormControl type="text" placeholder="Search per name..." 
-          value={filterText} onChange={handleChange}/>
-        <FormControl.Feedback />
-      </FormGroup>
-    </form>
+      <FormControl type="text" placeholder="Search per name..." 
+        value={filterText} onChange={handleChange}/>
   )
 }
 
-export { ExerciseRow, ExerciseSearchBar };
+const AddExerciseButton = () => (
+  <LinkContainer to="/exercises/new">
+    <Button bsStyle="primary">Add Exercise</Button>
+  </LinkContainer>
+)
+
+export { ExerciseRow, ExerciseSearchBar, ExercisesHeader };

@@ -3,7 +3,10 @@ import * as types from '../actions/action-types'
 export default (state = {}, action) => {
     switch (action.type) {
         case types.ADD_EXERCISE_TO_LIST_OF_EXERCISES: {
-            const exercise = action.payload;
+            let exercise = action.payload;
+            if(exercise.id === undefined) {
+                exercise.id = state.exercises.map(ex => ex.id).reduce((max, x) => x > max ? x : max) + 1;    
+            }
             return Object.assign({}, state, {exercises: [
                 ...state.exercises, 
                 {

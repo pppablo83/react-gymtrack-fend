@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import exercisesDataReducer from './ExerciseDataReducer'
+import exercisesDataReducer from './ExerciseDataReducer';
+import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
-    exercisesData : exercisesDataReducer
+    exercisesData : exercisesDataReducer,
+    form: formReducer
 });
 
 export default rootReducer;
