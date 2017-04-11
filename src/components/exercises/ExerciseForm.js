@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { Button, ButtonToolbar, Col, Form, FormGroup, ControlLabel } from 'react-bootstrap'
+import { reduxForm } from 'redux-form';
+import { Button, ButtonToolbar, Col, Form, FormGroup } from 'react-bootstrap'
 import FormInputField from '../common/FormInputField'
 
 class ExerciseForm extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
-      <Form horizontal onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         
-        <FormInputField name="name" label="Name"
-          inputProps={{type: 'text', component:'input'}}
-          labelProps={{xs: 2}} inputColProps={{xs: 10}}
+        <FormInputField name="name" label="Name" placeholder="Exercise name"
+          inputProps={{type: 'text'}}
         />
 
-        <FormInputField name="category" label="Category"
-          inputProps={{type: 'text', component:'input'}}
-          labelProps={{xs: 2}} inputColProps={{xs: 10}}
+        <FormInputField name="category" label="Category" placeholder="Exercise category"
+          inputProps={{type: 'text'}}
         />
 
-        <FormGroup controlId="type">
-          <Col componentClass={ControlLabel} xs={2} >
-            Type
-          </Col>
-          <Col xs={10}>
-            <label><Field name="type" component="input" type="radio" value="weights">
-              {this.props.children}
-            </Field>Weights & reps</label>
-            {'  '}
-            <label><Field name="type" component="input" type="radio" value="distance">
-              {this.props.children}
-            </Field>Distance & time</label>
-          </Col>
-        </FormGroup>
+        <FormInputField name="type" label="Type" placeholder="Weights & reps"
+          inputProps={{type: 'select', 
+                      options: [{value: "Weights & reps", text: "Weights & reps"}
+                                , {value: "Distance & time", text: "Distance & time"}]}}
+        />
 
         <FormGroup>
           <Col smOffset={2} sm={10}>
